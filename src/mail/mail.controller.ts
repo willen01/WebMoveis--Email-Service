@@ -12,14 +12,12 @@ export class MailController {
     const { Username, destination, subject, message } = KafkaMessage;
 
     for (const email of destination) {
-      //realiza o envio do email
+      // DESAFIO - realiza o envio do email personalizado. A forma de personalizar foi enviando um email com nome do Usuário
       await this.emailService.sendEmail({
         to: email,
         subject: subject,
         html: `Olá ${Username}, ${message}`,
       });
     }
-
-    console.log(KafkaMessage);
   }
 }
